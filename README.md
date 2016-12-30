@@ -9,6 +9,13 @@
 
 10.0.2.15 把此IP换成本地IP,或者公网IP
 
+然后执行 python dns.py
+
+修改本机的dns地址为本机ip地址即可
+
+
+## 本机ip
+
 Windows 可用 ipconfig 命令查看
 
 Linux 可用 ifconfig 命令查看
