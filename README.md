@@ -10,6 +10,7 @@
 10.0.2.15 把此IP换成本地IP,或者公网IP
 
 Windows 可用 ipconfig 命令查看
+
 Linux 可用 ifconfig 命令查看
 # rpz.json 格式说明
 
