@@ -1,4 +1,5 @@
 # dowsDNS
+
 快速翻跃中国防火墙
 
 # 使用方法
@@ -13,30 +14,20 @@
 
 修改本机的dns地址为本机ip地址即可
 
-
-## 本机ip
-
-Windows 可用 ipconfig 命令查看
-
-Linux 可用 ifconfig 命令查看
-
-# rpz.json 格式说明
-
-按照JSON格式添加记录即可
-
-如查找 123.www.google.com
-
-先匹配 123 ,若未找到,则继续
-
-匹配 wwww ,若未找到,则继续如此递减匹配,
-
-直到google.com为止。
-
-所以添加域名，务必添加一级域名
-
-
-
 # 缺陷
 
 * 不支持IPv6
 * 查找性能有待提高
+
+# 更多请参阅
+
+请务必以zeronet访问，关于如何下载使用，可以参考这里：
+
+[ZERONET官网](https://zeronet.io/)
+
+[各大平台使用教程(英文)](https://github.com/HelloZeroNet/ZeroNet#user-content-how-to-join)
+
+
+[基于zeronet的博客](http://127.0.0.1:43110/1P7kEUyonzvkx6yywce2PBn7zPrngX5pgz/?Post:3:Windows+%E4%BD%BF%E7%94%A8dowDNS%E6%95%99%E7%A8%8B)
+
+[Windows 使用dowDNS教程](http://127.0.0.1:43110/1P7kEUyonzvkx6yywce2PBn7zPrngX5pgz/?Post:3:Windows+%E4%BD%BF%E7%94%A8dowDNS%E6%95%99%E7%A8%8B)
