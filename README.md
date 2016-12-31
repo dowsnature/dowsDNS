@@ -5,11 +5,11 @@
 
 修改文件config.json
 
-"Local_dns_server" : "10.0.2.15",
+`"Local_dns_server" : "10.0.2.15",`
 
-10.0.2.15 把此IP换成本地IP,或者公网IP
+`10.0.2.15` 把此IP换成本地IP,或者公网IP
 
-然后执行 python dns.py
+然后执行 `python dns.py`
 
 修改本机的dns地址为本机ip地址即可
 
@@ -19,6 +19,7 @@
 Windows 可用 ipconfig 命令查看
 
 Linux 可用 ifconfig 命令查看
+
 # rpz.json 格式说明
 
 按照JSON格式添加记录即可
