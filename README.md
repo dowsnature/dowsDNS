@@ -14,6 +14,10 @@
 
 修改本机的dns地址为本机ip地址即可
 
+# 效果
+
+![](http://pix.toile-libre.org/upload/original/1483170936.png)
+
 # 缺陷
 
 * 不支持IPv6
@@ -21,11 +25,9 @@
 
 # 更多请参阅
 
-
-
 [ZERONET官网](https://zeronet.io/)
 
-[各大平台使用教程(英文)](https://github.com/HelloZeroNet/ZeroNet#user-content-how-to-join)
+[ZERONET各大平台使用教程(英文)](https://github.com/HelloZeroNet/ZeroNet#user-content-how-to-join)
 
 ## 以下链接请务必以zeronet访问
 
