@@ -21,12 +21,13 @@
 
 # 更多请参阅
 
-请务必以zeronet访问，关于如何下载使用，可以参考这里：
+
 
 [ZERONET官网](https://zeronet.io/)
 
 [各大平台使用教程(英文)](https://github.com/HelloZeroNet/ZeroNet#user-content-how-to-join)
 
+## 以下链接请务必以zeronet访问，关于如何下载使用，可以参考这里：
 
 [基于zeronet的博客](http://127.0.0.1:43110/1P7kEUyonzvkx6yywce2PBn7zPrngX5pgz/?Post:3:Windows+%E4%BD%BF%E7%94%A8dowDNS%E6%95%99%E7%A8%8B)
 
