@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import dnslib.dnsfucation as dns
+import dnslib.update as  dnsupdate
 import socket, sys
 import threading
 import json
@@ -74,6 +75,12 @@ def main(s):
 		print "Unknow error :\t",e
 
 if __name__ == '__main__':
+	try:
+		dnsupdate.Update_record()
+		dnsupdate.GetWildcardsrcd()
+	except Exception as e:
+		print e
+		print  u"自动更新记录失败:请尝试先修改系统DNS为公共DNS"
 	Load_config()
 	print u"==========加载配置=========="
 	print u"本地DNS地址：",Local_dns_server
