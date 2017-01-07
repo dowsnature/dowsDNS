@@ -1,27 +1,26 @@
 # dowsDNS
 
-快速翻跃中国防火墙
+快速翻越中国防火墙
 
 # 使用方法
 
-修改文件config.json
+* python2 dns.py
+* 运行成功后再修改系统DNS为：127.0.0.1
 
-`"Local_dns_server" : "10.0.2.15",`
+# 局域网监听
 
-`10.0.2.15` 把此IP换成本地IP,或者公网IP
+* 修改文件config.json
 
-然后执行 `python dns.py`
+ "Local_dns_server" : "127.0.0.1",
 
-修改本机的dns地址为本机ip地址即可
+  127.0.0.1 把此IP换成本地IP
+* 同一局域网下，把手机DNS改为 运行程序的电脑的IP地址即可
 
 # 效果
 
 ![](http://pix.toile-libre.org/upload/original/1483170936.png)
 
-# 缺陷
 
-* 不支持IPv6
-* 查找性能有待提高
 
 # 更多请参阅
 
