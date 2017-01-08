@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import dnslib.dnsfucation as dns
-import dnslib.update as  dnsupdate
 import socket, sys
 import threading
 import json
@@ -43,7 +42,6 @@ def Tthreading(data,s,addr,):
 	t = threading.Thread(target=SendDnsData,args=(data,s,addr,))
 	t.setDaemon(True)
 	t.start()
-	#print "当前进程：" ,threading.activeCount()
 
 def SendDnsData(data,s,addr):
 	global Remote_dns_server
@@ -75,26 +73,21 @@ def main(s):
 		print "Unknow error :\t",e
 
 if __name__ == '__main__':
-	try:
-		dnsupdate.Update_record()
-		dnsupdate.GetWildcardsrcd()
-	except Exception as e:
-		print e
-		print  u"自动更新记录失败:请尝试先修改系统DNS为公共DNS"
+
 	Load_config()
-	print u"==========加载配置=========="
-	print u"本地DNS地址：",Local_dns_server
-	print u"本地DNS端口：",Local_dns_port
-	print u"远程DNS地址：",Remote_dns_server
-	print u"远程DNS地址：",Remote_dns_port
-	print u"==========配置完成=========="
-	print u"尝试绑定本地DNS地址和端口..."
+	print "==========Config==========="
+	print "Local_dns_server:",Local_dns_server
+	print "Local_dns_port:",Local_dns_port
+	print "Remote_dns_server:",Remote_dns_server
+	print "Remote_dns_port:",Remote_dns_port
+	print "===========Config=========="
+	print "Trying start bind local IP and port ..."
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	try:
 		s.bind((Local_dns_server,Local_dns_port))
 	except Exception as e:
-		print u"\n绑定失败！请以管理员身份运行，\n\n并检查本地IP地址和端口是否正确？\n"
-		print u"==========出错信息=========="
+		print "\nBinding failed! Please run as administrator，\n\nAnd check the local IP address and port is correct?\n"
+		print "==========Error message=========="
 		raise e
-	print u"绑定成功！\n正在运行中..."
+	print "Bind successfully! Running ..."
 	main(s)
