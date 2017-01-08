@@ -64,6 +64,7 @@ def GetDnsDomainIP(data):
 	成功返回列表，失败返回空列表
 	列表格式：["域名"，"十六进制表示的IP1","十六进制表示的IP2",...,"十六进制表示的IPn"]'''
 	data = data.encode('hex')
+
 	try:
 		iptext= []
 		'''retype 值：查询 = 0 ,应答=1'''
@@ -112,15 +113,21 @@ def analysis(data,dict_data):
 	return data
 
 def analysis2(data,dict_data):
-	'''对DNS数据包进行分析修正'''
+	'''构造DNS报文'''
 	data = data.encode('hex')
 	domain,end = DnshextoDomain(data)
+
 	ip = None
 	if len(domain) >0:
 		print "Query:\t",domain
 		ip = Search_key_ip(domain,dict_data)
-	if ip :
-		data = data[0:4] + '81800001000100000001'+data[24:end]+'00010001c00c00010001000000b40004'
+	if ip  :
+		if  data[end+2:end+4] == '1c':
+			'''屏蔽IPv6'''
+			data = data[0:4] + '81800001000000000000'+data[24:end]+'001c0001'
+			return 1,data.decode('hex')
+
+		data = data[0:4] + '81800001000100000000'+data[24:end]+'00010001c00c000100010000003f0004'
 		#十进制表示的IP变为十六进制表示的IP
 		dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
 		print "Revise:\t",domain
