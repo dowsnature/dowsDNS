@@ -65,12 +65,12 @@ def SendDnsData(data,s,addr):
 			break
 
 def main(s):
-	try:
-		while 1:
+	while 1:
+		try:
 			data, addr = s.recvfrom(2048)
 			Tthreading(data,s,addr)
-	except Exception as e:
-		print "Unknow error :\t",e
+		except Exception as e:
+			print "Unknow error :\t",e
 
 if __name__ == '__main__':
 
