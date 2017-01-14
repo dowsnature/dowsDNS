@@ -4,6 +4,6 @@
 		"yhosts":"https://raw.githubusercontent.com/vokins/yhosts/master/hosts"
 	},
 	"DNSMasq":"I'm too lazy, you know",
-	"jsonb64":"https://raw.githubusercontent.com/dowsnature/dowsDNS/master/wrcd.base64"
+	"jsonb64":"https://raw.githubusercontent.com/dowsnature/dowsDNS/master/data/wrcd.base64"
 
 }
