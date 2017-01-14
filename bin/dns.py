@@ -20,13 +20,13 @@ def Load_config():
 	global Local_dns_server
 	global Local_dns_port
 	dict_wdata={}
-	with open ("config.json",'r') as d:
+	with open ("./conf/config.json",'r') as d:
 		dict_config = json.load(d)
 	
 	with open (dict_config['Rpz_json_path'],'r') as c:
 		dict_data = json.load(c)
 
-	with open("./wrcd.base64",'r') as f:
+	with open("./data//wrcd.base64",'r') as f:
 		data  = base64.b64decode(f.read())
 		dict_wdata = json.loads(data)
 	dict_data.update(dict_wdata)

@@ -1,0 +1,9 @@
+{
+	"hosts":{
+		"racaljk":"https://coding.net/u/scaffrey/p/hosts/git/raw/master/hosts",
+		"yhosts":"https://raw.githubusercontent.com/vokins/yhosts/master/hosts"
+	},
+	"DNSMasq":"I'm too lazy, you know",
+	"jsonb64":"https://raw.githubusercontent.com/dowsnature/dowsDNS/master/wrcd.base64"
+
+}
