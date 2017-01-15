@@ -4,11 +4,15 @@
 
 # 使用方法
 
+仅支持Linux/Windows/Mac
+
 ## Linux/Mac
 
 * sudo python2 run.py
 
 * 运行成功后再修改系统DNS为：127.0.0.1
+
+* 更新：python2 run.py update 或 python2 bin/update.py
 
 ## Windows
 
