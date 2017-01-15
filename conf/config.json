@@ -3,5 +3,7 @@
 	"Remote_dns_port":53,
 	"Rpz_json_path":"./data/rpz.json",
 	"Local_dns_server" : "127.0.0.1",
-	"Local_dns_port" :  53
+	"Local_dns_port" :  53,
+	"sni_proxy_on":true,
+	"sni_proxy_ip":"219.76.4.3"
 }
