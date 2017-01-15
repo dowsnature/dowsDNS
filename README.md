@@ -4,9 +4,20 @@
 
 # 使用方法
 
-* python2 dns.py
+## Linux/Mac
+
+* sudo python2 run.py
 
 * 运行成功后再修改系统DNS为：127.0.0.1
+
+## Windows
+
+* 下载 dowsDNS.zip，解压
+
+ * 下载地址：https://github.com/dowsnature/dowsDNS/releases/latest/
+
+* 右键管理员身份运行 Windows.bat
+
 
 # 局域网共享使用
 
@@ -24,8 +35,13 @@
 
 ![](http://pix.toile-libre.org/upload/original/1483170936.png)
 
+# 数据引用
 
 
+  * https://raw.githubusercontent.com/vokins/yhosts/master/hosts
+  
+  * https://github.com/racaljk/hosts
+  
 # 更多请参阅
 
 [ZERONET官网](https://zeronet.io/)
