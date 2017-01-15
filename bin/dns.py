@@ -29,12 +29,16 @@ def Load_config():
 	with open("./data//wrcd.base64",'r') as f:
 		data  = base64.b64decode(f.read())
 		dict_wdata = json.loads(data)
+	
+	if dict_config['sni_proxy_on']:
+		for key in dict_wdata:
+			dict_wdata[key] = dict_config['sni_proxy_ip']
 	dict_data.update(dict_wdata)
 
 
 	Remote_dns_server 	= 	dict_config['Remote_dns_server']
 	Remote_dns_port		=	dict_config['Remote_dns_port']
-	Local_dns_server		=	dict_config['Local_dns_server']
+	Local_dns_server	=	dict_config['Local_dns_server']
 	Local_dns_port		= 	dict_config['Local_dns_port']
 
 def Tthreading(data,s,addr,):
