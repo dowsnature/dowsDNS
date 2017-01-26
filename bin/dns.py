@@ -6,6 +6,7 @@ import json
 import base64
 import logging
 
+logging.basicConfig(level=logging.INFO)
 dict_data = {}
 dict_config = {}
 Remote_dns_server='114.114.114.114'
@@ -64,7 +65,7 @@ def SendDnsData(data,s,addr):
 			try:
 				rspdata = sock.recv(4096)
 			except Exception as e:
-				logging.warn("sock.recv info:%s"%e)
+				logging.warn("sock.recv info:\t%s"%e)
 				break
 			s.sendto(rspdata ,addr)
 			break
@@ -75,7 +76,7 @@ def main(s):
 			data, addr = s.recvfrom(2048)
 			Tthreading(data,s,addr)
 		except Exception as e:
-			logging.warn("Unknow error:%s"%e)
+			logging.warn("Unknow error:\t%s"%e)
 
 if __name__ == '__main__':
 
