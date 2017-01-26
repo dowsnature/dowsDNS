@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import logging
-
+logging.basicConfig(level=logging.INFO)
 def Search_key_ip(string,dict_data):
 	string = string[:-1]
 	if string in dict_data.keys():
@@ -120,7 +120,7 @@ def analysis2(data,dict_data):
 
 	ip = None
 	if len(domain) >0:
-		logging("Query:\t%s"%domain)
+		logging.info("Query:\t%s"%domain)
 		ip = Search_key_ip(domain,dict_data)
 	if ip  :
 		if  data[end+2:end+4] == '1c':
@@ -131,7 +131,7 @@ def analysis2(data,dict_data):
 		data = data[0:4] + '81800001000100000000'+data[24:end]+'00010001c00c000100010000003f0004'
 		#十进制表示的IP变为十六进制表示的IP
 		dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
-		logging("Revise:\t%s"%domain)
+		logging.info("Revise:\t%s"%domain)
 		data =  data + dnsip
 		return 1,data.decode('hex')
 	return 0,data.decode('hex')
