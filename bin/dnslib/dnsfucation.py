@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import logging
 
 def Search_key_ip(string,dict_data):
 	string = string[:-1]
@@ -19,13 +20,13 @@ def Hex2Ascii(string):
 		Int = int(string,16)
 		return  chr(Int)
 	except Exception as e:
-		print "Hex2Ascii info:\t",e
+		logging.warn("Hex2Ascii info:\t%s"%e)
 
 def Hex2Str_dec(string):
 	try:
 		return str(int(string,16))
 	except Exception as e:
-		print "Hex2Str_dec info:\t",e
+		logging.warn("Hex2Str_dec info:\t%s"%e)
 
 def HexIP2DecIP(string) :
 	string = string.replace('\t','').replace('\n','').replace(' ','')
@@ -36,7 +37,7 @@ def HexIP2DecIP(string) :
 		else:
 			return "?.?.?.?"
 	except Exception as e:
-		print  "HexIP2DecIP  info:\t",e
+		logging("HexIP2DecIP  info:\t%s"%e)
 
 def DnshextoDomain(string,start=24,end=26):
 	'''原始数据：域名指针默认在24-26个字节位置，
@@ -57,7 +58,7 @@ def DnshextoDomain(string,start=24,end=26):
 			end +=2
 		return ''.join(Domain),end
 	except Exception as e:
-		print "DnshextoDomain info:\t",e
+		logging.warn("DnshextoDomain info:\t%s"%e)
 
 def GetDnsDomainIP(data):
 	'''提取域名和IP
@@ -92,7 +93,7 @@ def GetDnsDomainIP(data):
 		
 		return iptext
 	except Exception as e:
-		print "GetDnsDomainIP info:\t",e
+		logging("GetDnsDomainIP info:\t%s"%e)
 		return []
 
 def analysis(data,dict_data):
@@ -119,7 +120,7 @@ def analysis2(data,dict_data):
 
 	ip = None
 	if len(domain) >0:
-		print "Query:\t",domain
+		logging("Query:\t%s"%domain)
 		ip = Search_key_ip(domain,dict_data)
 	if ip  :
 		if  data[end+2:end+4] == '1c':
@@ -130,7 +131,7 @@ def analysis2(data,dict_data):
 		data = data[0:4] + '81800001000100000000'+data[24:end]+'00010001c00c000100010000003f0004'
 		#十进制表示的IP变为十六进制表示的IP
 		dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
-		print "Revise:\t",domain
+		logging("Revise:\t%s"%domain)
 		data =  data + dnsip
 		return 1,data.decode('hex')
 	return 0,data.decode('hex')
