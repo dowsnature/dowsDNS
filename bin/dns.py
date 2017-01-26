@@ -65,7 +65,7 @@ def SendDnsData(data,s,addr):
 			try:
 				rspdata = sock.recv(4096)
 			except Exception as e:
-				logging.warn("sock.recv info:\t%s"%e)
+				logging.warn("Recv:\t%s"%e)
 				break
 			s.sendto(rspdata ,addr)
 			break
