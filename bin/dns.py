@@ -4,6 +4,7 @@ import socket, sys
 import threading
 import json
 import base64
+import logging
 
 dict_data = {}
 dict_config = {}
@@ -63,7 +64,7 @@ def SendDnsData(data,s,addr):
 			try:
 				rspdata = sock.recv(4096)
 			except Exception as e:
-				print "sock.recv info:",e
+				logging.warn("sock.recv info:%s"%e)
 				break
 			s.sendto(rspdata ,addr)
 			break
@@ -74,7 +75,7 @@ def main(s):
 			data, addr = s.recvfrom(2048)
 			Tthreading(data,s,addr)
 		except Exception as e:
-			print "Unknow error :\t",e
+			logging.warn("Unknow error:%s"%e)
 
 if __name__ == '__main__':
 
@@ -92,6 +93,7 @@ if __name__ == '__main__':
 	except Exception as e:
 		print "\nBinding failed! Please run as administrator，\n\nAnd check the local IP address and port is correct?\n"
 		print "==========Error message=========="
-		raise e
+		logging.critical(e)
+		sys.exit(-1)
 	print "Bind successfully! Running ..."
 	main(s)
