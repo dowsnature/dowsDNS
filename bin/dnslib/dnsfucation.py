@@ -117,7 +117,10 @@ def IP2HEX(ip):
 	zone = ip.split(".")
 	HEX = ''
 	for i in zone:
-		HEX += hex(int(i)).replace("0x",'')
+		i = hex(int(i)).replace("0x",'')
+		if len(i) < 2:
+			i = '0' + i
+		HEX += i
 	return HEX
 
 def analysis2(data,dict_data):
