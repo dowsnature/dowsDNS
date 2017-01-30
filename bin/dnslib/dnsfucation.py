@@ -113,6 +113,13 @@ def analysis(data,dict_data):
 				data = data.encode('hex').replace(iplist[i],dnsip).decode('hex')
 	return data
 
+def IP2HEX(ip):
+	zone = ip.split(".")
+	HEX = ''
+	for i in zone:
+		HEX += hex(int(i)).replace("0x",'')
+	return HEX
+
 def analysis2(data,dict_data):
 	'''构造DNS报文'''
 	data = data.encode('hex')
@@ -130,7 +137,8 @@ def analysis2(data,dict_data):
 
 		data = data[0:4] + '81800001000100000000'+data[24:end]+'00010001c00c000100010000003f0004'
 		#十进制表示的IP变为十六进制表示的IP
-		dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
+		#dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
+		dnsip = IP2HEX(ip)
 		logging.info("Revise:\t%s"%domain)
 		data =  data + dnsip
 		return 1,data.decode('hex')
