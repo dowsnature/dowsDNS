@@ -15,8 +15,7 @@
 
 * sudo python2 run.py
 
-* 运行成功后再修改系统DNS为：127.0.0.1
-
+* 运行成功后再修改系统DNS为：dowsDNS/conf/config.json中的"Local_dns_server"的ip即可
 * 更新：python2 run.py update 或 python2 bin/update.py
 
 ## Windows
