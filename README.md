@@ -1,7 +1,5 @@
 ## 更新hosts文件
-1. cd data
-2. 将hosts拷入当前目录中
-3. ./update
+*. 将hosts拷入data目录即可
 
 # 原项目README
 
