@@ -3,8 +3,8 @@
 #include <string.h>
 
 int main(void) {
-	char *input_file_name 		= "hosts";
-	char *output_file_name 		= "rpz.json";
+	char *input_file_name 		= "data/hosts";
+	char *output_file_name 		= "data/rpz.json";
 	FILE *input_file_pointer	= fopen(input_file_name,  "r");
 	FILE *output_file_pointer	= fopen(output_file_name, "w");
 	char input_string[255];

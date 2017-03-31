@@ -1,6 +1,8 @@
 import sys
 import os
 
+os.system("data/update");
+
 if len(sys.argv) > 1:
 	if sys.argv[1] == 'update':
 		os.system('python2 bin/update.py')
