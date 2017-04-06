@@ -1,5 +1,18 @@
+# 注意只更改了Linux版本
+
 ## 更新hosts文件
-*. 将hosts拷入data目录即可
+1. 将hosts拷入data目录
+2. 重新运行即可
+
+## 使用方法
+1. git clone https://github.com/liuyunbin/dowsDNS
+2. cd dowsDNS/data
+3. make
+4. cd ..
+5. sudo sudo python2 run.py
+6. 将DNS服务器改为 本机ip---可使用 ip appr查看
+7. 重启网络服务和浏览器即可
+
 
 # 原项目README
 
