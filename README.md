@@ -10,7 +10,7 @@
 3. make
 4. cd ..
 5. sudo sudo python2 run.py
-6. 将DNS服务器改为 本机ip---可使用 ip appr查看
+6. 将DNS服务器改为 本机ip---可使用 ip addr查看
 7. 重启网络服务和浏览器即可
 
 
