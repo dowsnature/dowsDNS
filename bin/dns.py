@@ -28,9 +28,8 @@ def Load_config():
 	with open (dict_config['Rpz_json_path'],'r') as c:
 		dict_data = json.load(c)
 
-	with open("./data//wrcd.base64",'r') as f:
-		data  = base64.b64decode(f.read())
-		dict_wdata = json.loads(data)
+	with open("./data/wrcd.json",'r') as f:
+		dict_wdata = json.load(f)
 	
 	if dict_config['sni_proxy_on']:
 		for key in dict_wdata:

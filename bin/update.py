@@ -26,12 +26,12 @@ def Update_record(data):
 def GetWildcardsrcd(url):
 	print ("Starting   [ 2 ]  updating...")
 	data = urllib2.urlopen(url) .read()
-	with open("./data/wrcd.base64",'w') as f:
+	with open("./data/wrcd.json",'w') as f:
 		f.write(data)
 	print ("success!   [ 2 ]  have done ! ")
 
 def main():
-	with open ("./conf/data.json",'r') as d:
+	with open ("./conf/hosts_repository_config.json",'r') as d:
 		dict_config = json.load(d)
 	dict_host={}
 
@@ -41,12 +41,12 @@ def main():
 				url = dict_config[key1][key2]
 				dict1 = Get_host(url)
 				dict_host.update(dict1)
-		elif key1 == "jsonb64":
+		elif key1 == "wrcd":
 			pass
 		else:
 			print("Sorry,%s is not support"%key1)
 
-	url = dict_config['jsonb64']
+	url = dict_config['wrcd']
 	Update_record(dict_host)
 	GetWildcardsrcd(url)
 
