@@ -12,8 +12,7 @@ def Search_key_ip(string,dict_data):
 			b = '*.'+'.'.join(domain)
 			if b in dict_data.keys():
 				return dict_data[b]
-			else:
-				return None
+		return None
 
 def Hex2Ascii(string):
 	try:
