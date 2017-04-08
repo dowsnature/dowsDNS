@@ -47,4 +47,5 @@
 
 
 # 更多请参阅
-[Harrison's Blog]:http://www.codedev.cn
+
+  * http://www.codedev.cn/forum.php?mod=viewthread&tid=10
