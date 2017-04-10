@@ -12,8 +12,7 @@ def Search_key_ip(string,dict_data):
 			b = '*.'+'.'.join(domain)
 			if b in dict_data.keys():
 				return dict_data[b]
-			else:
-				return None
+		return None
 
 def Hex2Ascii(string):
 	try:
@@ -130,8 +129,8 @@ def analysis2(data,dict_data):
 
 	ip = None
 	if len(domain) >0:
-		logging.info("Query:\t%s"%domain)
 		ip = Search_key_ip(domain,dict_data)
+		logging.info("Query domain:%s\tip:%s", domain, ip)
 	if ip  :
 		if  data[end+2:end+4] == '1c':
 			'''屏蔽IPv6'''
@@ -142,7 +141,6 @@ def analysis2(data,dict_data):
 		#十进制表示的IP变为十六进制表示的IP
 		#dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
 		dnsip = IP2HEX(ip)
-		logging.info("Revise:\t%s"%domain)
 		data =  data + dnsip
 		return 1,data.decode('hex')
 	return 0,data.decode('hex')
