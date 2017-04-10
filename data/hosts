@@ -1,6 +1,6 @@
 # Copyright (c) 2014-2017, racaljk.
 # https://github.com/racaljk/hosts
-# Last updated: 2017-03-28
+# Last updated: 2017-04-03
 
 # https://laod.cn/hosts/2017-google-hosts.html
 
@@ -304,12 +304,12 @@
 61.91.161.217	takeout.google.com
 61.91.161.217	bpui0.google.com
 61.91.161.217	cse.google.com
-219.76.4.14	clients1.google.com
-219.76.4.14	clients2.google.com
-219.76.4.14	clients3.google.com
-219.76.4.14	clients4.google.com
-219.76.4.14	clients5.google.com
-219.76.4.14	clients6.google.com
+61.91.161.217	clients1.google.com
+61.91.161.217	clients2.google.com
+61.91.161.217	clients3.google.com
+61.91.161.217	clients4.google.com
+61.91.161.217	clients5.google.com
+61.91.161.217	clients6.google.com
 61.91.161.217	client2.google.com
 61.91.161.217	client4.google.com
 61.91.161.217	client6.google.com
@@ -355,6 +355,7 @@
 61.91.161.217	linkhelp.clients.google.com
 61.91.161.217	upload.clients.google.com
 61.91.161.217	myaccount.google.com
+61.91.161.217	opensource.google.com
 61.91.161.217	peering.google.com
 61.91.161.217	places.google.com
 61.91.161.217	pki.google.com
@@ -488,6 +489,7 @@
 61.91.161.217	gmail.googleblog.com
 61.91.161.217	chrome.googleblog.com
 61.91.161.217	search.googleblog.com
+61.91.161.217	opensource.googleblog.com
 61.91.161.217	webmasters.googleblog.com
 61.91.161.217	maps.googleblog.com
 61.91.161.217	cloudplatform.googleblog.com
@@ -531,11 +533,14 @@
 61.91.161.217	googleforstudents.blogspot.com
 61.91.161.217	students.googleblog.com
 61.91.161.217	chrome.blogspot.com
+61.91.161.217	publicpolicy.googleblog.com
+61.91.161.217	googlepublicpolicy.blogspot.com
 61.91.161.217	googleadservices.com
 61.91.161.217	www.googleadservices.com
 61.91.161.217	google-latlong.blogspot.com
 61.91.161.217	insidesearch.blogspot.com
 61.91.161.217	googleadsdeveloper.blogspot.com
+61.91.161.217	googledevelopers.blogspot.com
 61.91.161.217	officialandroid.blogspot.com
 61.91.161.217	android-developers.blogspot.com
 61.91.161.217	android-developers.blogspot.hk
@@ -791,7 +796,7 @@
 61.91.161.217	sketchup.google.com
 61.91.161.217	tagmanager.google.com
 61.91.161.217	talkgadget.google.com
-219.76.4.14	tools.google.com
+61.91.161.217	tools.google.com
 61.91.161.217	toolbar.google.com
 61.91.161.217	toolbar.google.com.hk
 61.91.161.217	translate.google.com
@@ -915,6 +920,7 @@
 61.91.161.217	khms0.googleapis.com
 61.91.161.217	khms1.googleapis.com
 61.91.161.217	maps.googleapis.com
+61.91.161.217	opensourceprojects-pa.googleapis.com
 61.91.161.217	origin-commondatastorage.googleapis.com
 216.58.221.144	commondatastorage.googleapis.com
 61.91.161.217	photos.googleapis.com

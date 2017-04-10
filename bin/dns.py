@@ -36,14 +36,12 @@ def Load_config():
 			dict_wdata[key] = dict_config['sni_proxy_ip']
 	dict_data.update(dict_wdata)
 
-
 	Remote_dns_server 	= 	dict_config['Remote_dns_server']
 	Remote_dns_port		=	dict_config['Remote_dns_port']
 	Local_dns_server	=	dict_config['Local_dns_server']
 	Local_dns_port		= 	dict_config['Local_dns_port']
 
-def Tthreading(data,s,addr,):
-	
+def Tthreading(data,s,addr,):	
 	t = threading.Thread(target=SendDnsData,args=(data,s,addr,))
 	t.setDaemon(True)
 	t.start()
@@ -54,7 +52,7 @@ def SendDnsData(data,s,addr):
 	global dict_data
 	
 	local,data = dns.analysis2(data,dict_data)
-	if local ==1:
+	if local == 1:
 		s.sendto(data ,addr)
 	else:
 		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
