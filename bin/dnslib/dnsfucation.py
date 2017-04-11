@@ -39,7 +39,7 @@ def HexIP2DecIP(string) :
 		logging("HexIP2DecIP  info:\t%s"%e)
 
 def DnshextoDomain(string,start=24,end=26):
-	'''原始数据：域名指针默认在24-26个字节位置，
+	'''原始数据：域名指针默认在12个字节位置，
 	若不是完整的原始数据，请指定域名指针的位置'''
 
 	try:
