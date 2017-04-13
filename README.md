@@ -8,13 +8,9 @@
 仅支持Linux/Windows/Mac
 
 ## Linux/Mac
-
-1. cd dowsDNS/data
-2. make
-3. cd ..
-4. sudo ./start.sh 
-5. 将DNS服务器改为 本机ip---可使用 ip addr查看
-6. 重启网络服务和浏览器即可
+1. sudo ./start.sh 
+2. 将DNS服务器改为 本机ip---可使用 ip addr查看
+3. 重启网络服务和浏览器即可
 
 * 更新hosts：sudo ./update.sh
 
@@ -29,10 +25,7 @@
 
 若想让同局域网内所有设备使用DNS翻墙功能，请
 
-* 修改文件config.json
- "Local_dns_server" : "127.0.0.1",
- 127.0.0.1 把此IP换成 电脑本地IP
-
+* 防火墙开启此服务
 * 同一局域网下，把手机DNS改为 运行程序的电脑本地IP即可
 
 # 效果
