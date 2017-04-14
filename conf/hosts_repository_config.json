@@ -3,7 +3,7 @@
 		"racaljk":"https://coding.net/u/scaffrey/p/hosts/git/raw/master/hosts",
 		"yhosts":"https://raw.githubusercontent.com/vokins/yhosts/master/hosts",
 		"adaway":"https://raw.githubusercontent.com/aoccin/adaway/master/hosts",
-		"hosts":"https://github.com/racaljk/hosts/blob/master/hosts"
+		"hosts":"https://github.com/racaljk/hosts/raw/master/hosts"
 	},
 	"DNSMasq":"I'm too lazy, you know",
 	"wrcd":"https://raw.githubusercontent.com/harrisonpan/dowsDNS/master/data/wrcd.json"
