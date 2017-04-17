@@ -1,2 +1,1 @@
-data\update
-python2 bin\dns.py
+python3 bin\dns.py
