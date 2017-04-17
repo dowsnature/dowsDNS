@@ -1,20 +1,17 @@
-# -*- coding:utf-8 -*-
-import  urllib.request,  urllib.error,  urllib.parse
+import urllib.request
 import json
-import base64
+
 def  Get_host(url):
-	list1 = []
-	list2 = []
-	data = urllib.request.urlopen(url) .read()
+	data = urllib.request.urlopen(url).read().decode()
+	dict_data = {}
 	with open("./data/tmp",'w') as f:
 		f.write(data)
 	with open("./data/tmp",'r') as f:
 		for line in f:
-			if len(line)>4 and line[0:1] != '#' and '\n' and '\r' and '\r\n':
+			if len(line) > 4 and line[0:1] != '#' and '\n' and '\r' and '\r\n':
 				linedata  = (' '.join(line.split())).split(' ')
-				list1.append(linedata[1])
-				list2.append(linedata[0])
-	dict_data =   dict(list(zip(list1,list2)))
+				if len(linedata) >= 2:
+					dict_data[linedata[1]] = linedata[0]
 	return  dict_data
 
 def Update_record(data):
@@ -25,7 +22,7 @@ def Update_record(data):
 		print ("success!   [ 1 ]  have done ! ")
 def GetWildcardsrcd(url):
 	print ("Starting   [ 2 ]  updating...")
-	data = urllib.request.urlopen(url) .read()
+	data = urllib.request.urlopen(url) .read().decode()
 	with open("./data/wrcd.json",'w') as f:
 		f.write(data)
 	print ("success!   [ 2 ]  have done ! ")
@@ -39,22 +36,14 @@ def main():
 		if key1 == "hosts":
 			for key2 in dict_config[key1]:
 				url = dict_config[key1][key2]
-				dict1 = Get_host(url)
-				dict_host.update(dict1)
-		elif key1 == "wrcd":
-			pass
-		else:
-			print(("Sorry,%s is not support"%key1))
-
-	url = dict_config['wrcd']
+				dict_host.update( Get_host(url) )
 	Update_record(dict_host)
-	GetWildcardsrcd(url)
+	GetWildcardsrcd(dict_config['wrcd'])
 
 
 if __name__ == '__main__':
 	try:
 		main()
-		#Update_record()
-		#GetWildcardsrcd()
 	except Exception as e:
 		raise e
+
