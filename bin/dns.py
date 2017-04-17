@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 import dnslib.dnsfucation as dns
 import socket, sys
 import threading

@@ -1,6 +1,4 @@
-# -*- coding:utf-8 -*-
 import logging
-import binascii
 
 logging.basicConfig(level=logging.INFO)
 def Search_key_ip(string,dict_data):
