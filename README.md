@@ -14,7 +14,7 @@
 
 * 更新hosts：./update.sh
 
-## Windows
+## Windows ---- 未测试
 
 * 右键管理员身份运行 start.bat或update.bat(更新hosts)
 
