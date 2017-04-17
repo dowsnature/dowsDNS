@@ -7,17 +7,15 @@
 
 仅支持Linux/Windows/Mac
 
-## Linux/Mac
+## Linux/Mac ---- Linux 已测试，mac 未测试，python 测试版本 3.5
 1. sudo ./start.sh 
 2. 将DNS服务器改为 127.0.0.1
 3. 重启网络服务和浏览器即可
 
-* 更新hosts：sudo ./update.sh
+* 更新hosts：./update.sh
 
-## Windows
+## Windows ---- 未测试
 
-* 下载 dowsDNS.zip，解压
-* 下载地址：https://github.com/harrisonpan/dowsDNS/releases/latest/
 * 右键管理员身份运行 start.bat或update.bat(更新hosts)
 
 
