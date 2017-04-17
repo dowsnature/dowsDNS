@@ -9,7 +9,7 @@
 
 ## Linux/Mac
 1. sudo ./start.sh 
-2. 将DNS服务器改为 本机ip---可使用 ip addr查看
+2. 将DNS服务器改为 127.0.0.1
 3. 重启网络服务和浏览器即可
 
 * 更新hosts：sudo ./update.sh
@@ -25,12 +25,9 @@
 
 若想让同局域网内所有设备使用DNS翻墙功能，请
 
-* 防火墙开启此服务
-* 同一局域网下，把手机DNS改为 运行程序的电脑本地IP即可
-
-# 效果
-
-
+1. 将 dowsDNS/conf/config.json 里的 Local_dns_server 的 ip 改为 本机的 ip, 可使用 ip addr 查看
+2. 防火墙开启此服务
+3. 同一局域网下，把手机 DNS 改为 运行程序的电脑本地 IP 即可
 
 # 数据引用
 
