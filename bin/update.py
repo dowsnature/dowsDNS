@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
-import  urllib2
+import  urllib.request,  urllib.error,  urllib.parse
 import json
 import base64
 def  Get_host(url):
 	list1 = []
 	list2 = []
-	data = urllib2.urlopen(url) .read()
+	data = urllib.request.urlopen(url) .read()
 	with open("./data/tmp",'w') as f:
 		f.write(data)
 	with open("./data/tmp",'r') as f:
@@ -14,7 +14,7 @@ def  Get_host(url):
 				linedata  = (' '.join(line.split())).split(' ')
 				list1.append(linedata[1])
 				list2.append(linedata[0])
-	dict_data =   dict(zip(list1,list2))
+	dict_data =   dict(list(zip(list1,list2)))
 	return  dict_data
 
 def Update_record(data):
@@ -25,7 +25,7 @@ def Update_record(data):
 		print ("success!   [ 1 ]  have done ! ")
 def GetWildcardsrcd(url):
 	print ("Starting   [ 2 ]  updating...")
-	data = urllib2.urlopen(url) .read()
+	data = urllib.request.urlopen(url) .read()
 	with open("./data/wrcd.json",'w') as f:
 		f.write(data)
 	print ("success!   [ 2 ]  have done ! ")
@@ -44,7 +44,7 @@ def main():
 		elif key1 == "wrcd":
 			pass
 		else:
-			print("Sorry,%s is not support"%key1)
+			print(("Sorry,%s is not support"%key1))
 
 	url = dict_config['wrcd']
 	Update_record(dict_host)

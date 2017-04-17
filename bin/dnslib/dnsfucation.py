@@ -1,16 +1,18 @@
 # -*- coding:utf-8 -*-
 import logging
+import binascii
+
 logging.basicConfig(level=logging.INFO)
 def Search_key_ip(string,dict_data):
 	string = string[:-1]
-	if string in dict_data.keys():
+	if string in list(dict_data.keys()):
 		return dict_data[string]
 	else:
 		domain  = string.split('.')
 		while  len(domain) >2:
 			domain = domain[1:]
 			b = '*.'+'.'.join(domain)
-			if b in dict_data.keys():
+			if b in list(dict_data.keys()):
 				return dict_data[b]
 		return None
 
@@ -101,14 +103,14 @@ def analysis(data,dict_data):
 	ip = None
 	if len(iplist) >0:
 		domain =iplist[0]
-		print "Query:\t",domain
+		print("Query:\t",domain)
 		ip = Search_key_ip(domain,dict_data)
 	if ip :
 		for i,j in enumerate(iplist):
 			if i > 0:
 				#十进制表示的IP变为十六进制表示的IP
-				dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
-				print "Revise:\t",iplist[0]
+				dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*list(map(int, ip.split('.')))).lower()
+				print("Revise:\t",iplist[0])
 				data = data.encode('hex').replace(iplist[i],dnsip).decode('hex')
 	return data
 
@@ -124,7 +126,8 @@ def IP2HEX(ip):
 
 def analysis2(data,dict_data):
 	'''构造DNS报文'''
-	data = data.encode('hex')
+	'''data = data.encode('utf8')'''
+	data = data.hex()
 	domain,end = DnshextoDomain(data)
 
 	ip = None
@@ -135,12 +138,12 @@ def analysis2(data,dict_data):
 		if  data[end+2:end+4] == '1c':
 			'''屏蔽IPv6'''
 			data = data[0:4] + '81800001000000000000'+data[24:end]+'001c0001'
-			return 1,data.decode('hex')
+			return 1,bytes.fromhex(data)
 
 		data = data[0:4] + '81800001000100000000'+data[24:end]+'00010001c00c000100010000003f0004'
 		#十进制表示的IP变为十六进制表示的IP
 		#dnsip =  '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip.split('.'))).lower()
 		dnsip = IP2HEX(ip)
 		data =  data + dnsip
-		return 1,data.decode('hex')
-	return 0,data.decode('hex')
+		return 1,bytes.fromhex(data)
+	return 0,bytes.fromhex(data)

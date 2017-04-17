@@ -4,4 +4,4 @@ cd data
 make
 cd ..
 
-python2 bin/dns.py
+python3 bin/dns.py

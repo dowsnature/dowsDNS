@@ -78,20 +78,20 @@ def main(s):
 if __name__ == '__main__':
 
 	Load_config()
-	print "==========Config==========="
-	print "Local_dns_server:",Local_dns_server
-	print "Local_dns_port:",Local_dns_port
-	print "Remote_dns_server:",Remote_dns_server
-	print "Remote_dns_port:",Remote_dns_port
-	print "===========Config=========="
-	print "Trying start bind local IP and port ..."
+	print("==========Config===========")
+	print("Local_dns_server:",Local_dns_server)
+	print("Local_dns_port:",Local_dns_port)
+	print("Remote_dns_server:",Remote_dns_server)
+	print("Remote_dns_port:",Remote_dns_port)
+	print("===========Config==========")
+	print("Trying start bind local IP and port ...")
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	try:
 		s.bind((Local_dns_server,Local_dns_port))
 	except Exception as e:
-		print "\nBinding failed! Please run as administrator，\n\nAnd check the local IP address and port is correct?\n"
-		print "==========Error message=========="
+		print("\nBinding failed! Please run as administrator，\n\nAnd check the local IP address and port is correct?\n")
+		print("==========Error message==========")
 		logging.critical(e)
 		sys.exit(-1)
-	print "Bind successfully! Running ..."
+	print("Bind successfully! Running ...")
 	main(s)
