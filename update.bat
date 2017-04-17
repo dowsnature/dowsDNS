@@ -1,2 +1,1 @@
-data\update
-python2 bin\update.py
+python3 bin\update.py
