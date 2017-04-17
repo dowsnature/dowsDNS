@@ -16,8 +16,6 @@
 
 ## Windows
 
-* 下载 dowsDNS.zip，解压
-* 下载地址：https://github.com/harrisonpan/dowsDNS/releases/latest/
 * 右键管理员身份运行 start.bat或update.bat(更新hosts)
 
 
