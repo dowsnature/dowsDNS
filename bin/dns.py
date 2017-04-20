@@ -1,9 +1,11 @@
-import dnslib.dnsfucation as dns
+#!/usr/bin/env python3
+
 import socket, sys
 import threading
 import json
 import base64
 import logging
+import dnslib
 
 logging.basicConfig(level=logging.INFO)
 dict_data = {}
@@ -45,14 +47,32 @@ def Tthreading(data,s,addr,):
 	t.setDaemon(True)
 	t.start()
 
+def Search_key_ip(string):
+	global dict_data
+	string = string[:-1]
+	if string in list(dict_data.keys()):
+		return dict_data[string]
+	else:
+		domain  = string.split('.')
+		while  len(domain) >2:
+			domain = domain[1:]
+			b = '*.'+'.'.join(domain)
+			if b in list(dict_data.keys()):
+				return dict_data[b]
+		return None
+
 def SendDnsData(data,s,addr):
 	global Remote_dns_server
 	global Remote_dns_port
-	global dict_data
 	
-	local,data = dns.analysis2(data,dict_data)
-	if local == 1:
-		s.sendto(data ,addr)
+	request_packet = dnslib.DNSRecord.parse(data)
+	domain = request_packet.get_q().get_qname()
+	response_packet = request_packet.reply()
+	ip = Search_key_ip(str(domain))
+	if ip != None:
+		print(domain, ':', ip)
+		response_packet.add_answer(dnslib.RR(domain, dnslib.QTYPE.A, rdata=dnslib.A(ip), ttl=60))
+		s.sendto(response_packet.pack(), addr)
 	else:
 		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		sock.sendto(data, (Remote_dns_server,Remote_dns_port))
