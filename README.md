@@ -12,21 +12,22 @@
 2. 将DNS服务器改为 127.0.0.1
 3. 重启网络服务和浏览器即可
 
-## Mac ---- 未测试
-1. sudo ./start.sh 
+* 更新hosts：./update.py
+
+## Mac ---- 未测试 --- 欢迎有测试的同学提意见
+1. sudo ./start.py 
 2. 将DNS服务器改为 127.0.0.1
 3. 重启网络服务和浏览器即可
 
-* 更新hosts：./update.sh
+* 更新hosts：./update.py
 
-## Windows ---- 未测试
-
-* 右键管理员身份运行 start.bat或update.bat(更新hosts)
+## Windows ---- 未测试 --- 欢迎有测试的同学提意见
+* 右键管理员身份运行 start.py 或 update.py(更新 hosts )
 
 
 # 局域网共享使用
 
-# ubuntu ---- 已测试
+## ubuntu ---- 已测试
 1. firewall-cmd –add-port=53/udp      –permanent
 2. 同一局域网下，把其他设备 DNS 改为 运行程序的电脑本地 IP 即可
 
