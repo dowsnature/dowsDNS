@@ -3,7 +3,6 @@
 import socket, sys
 import threading
 import json
-import base64
 import logging
 import dnslib
 
@@ -65,8 +64,11 @@ def SendDnsData(data,s,addr):
 	global Remote_dns_server
 	global Remote_dns_port
 	
+	'''dns请求报文'''
 	request_packet = dnslib.DNSRecord.parse(data)
+	'''dns请求报文的域名'''
 	domain = request_packet.get_q().get_qname()
+	'''dns响应报文'''
 	response_packet = request_packet.reply()
 	ip = Search_key_ip(str(domain))
 	if ip != None:
