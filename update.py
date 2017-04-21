@@ -5,8 +5,7 @@ import json
 import os
 
 def  Get_host(url):
-	data = urllib.request.urlopen(url).read()
-	data = data.decode()
+	data = urllib.request.urlopen(url).read().decode()
 	dict_data = {}
 	with open("./data/tmp",'w') as f:
 		f.write(data)

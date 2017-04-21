@@ -53,7 +53,7 @@ def Search_key_ip(string):
 		return dict_data[string]
 	else:
 		domain  = string.split('.')
-		while  len(domain) >2:
+		while  len(domain) > 2:
 			domain = domain[1:]
 			b = '*.'+'.'.join(domain)
 			if b in list(dict_data.keys()):
