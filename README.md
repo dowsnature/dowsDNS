@@ -39,8 +39,7 @@
 2. 同一局域网下，把其他设备 DNS 改为 运行程序的电脑本地 IP 即可
 
 # 数据引用
-* https://raw.githubusercontent.com/vokins/yhosts/master/hosts
-* https://raw.githubusercontent.com/aoccin/adaway/master/hosts
+* https://pypi.python.org/pypi/dnslib
 * https://github.com/racaljk/hosts
 
 
