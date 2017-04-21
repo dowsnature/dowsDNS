@@ -97,7 +97,6 @@ def main(s):
 			logging.warn("Unknow error:\t%s"%e)
 
 if __name__ == '__main__':
-
 	Load_config()
 	print("==========Config===========")
 	print("Local_dns_server:",Local_dns_server)
@@ -116,3 +115,4 @@ if __name__ == '__main__':
 		sys.exit(-1)
 	print("Bind successfully! Running ...")
 	main(s)
+

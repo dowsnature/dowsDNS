@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 import urllib.request
 import json
+import os
 
 def  Get_host(url):
 	data = urllib.request.urlopen(url).read()
@@ -10,23 +13,26 @@ def  Get_host(url):
 	with open("./data/tmp",'r') as f:
 		for line in f:
 			if len(line) > 4 and line[0:1] != '#' and '\n' and '\r' and '\r\n':
-				linedata  = (' '.join(line.split())).split(' ')
+				linedata  = line.split()
 				if len(linedata) >= 2:
 					dict_data[linedata[1]] = linedata[0]
+	os.remove("./data/tmp")	
+
 	return  dict_data
 
 def Update_record(data):
-	print ("Starting   [ 1 ]  updating...")
+	print ("Starting hosts updating...")
 
 	with open("./data/rpz.json",'w') as f:
 		json.dump(data, f)
-		print ("success!   [ 1 ]  have done ! ")
+		print ("success! hosts  have done ! ")
+
 def GetWildcardsrcd(url):
-	print ("Starting   [ 2 ]  updating...")
+	print ("Starting  wrcd  updating...")
 	data = urllib.request.urlopen(url) .read().decode()
 	with open("./data/wrcd.json",'w') as f:
 		f.write(data)
-	print ("success!   [ 2 ]  have done ! ")
+	print ("success!  wrcd  have done ! ")
 
 def main():
 	with open ("./conf/hosts_repository_config.json",'r') as d:
@@ -37,10 +43,12 @@ def main():
 		if key1 == "hosts":
 			for key2 in dict_config[key1]:
 				url = dict_config[key1][key2]
-				dict_host.update( Get_host(url) )
-	Update_record(dict_host)
-	GetWildcardsrcd(dict_config['wrcd'])
-
+				dict_data = Get_host(url)
+				dict_host.update( dict_data )
+			Update_record(dict_host)
+		elif key1 == "wrcd":
+			url = dict_config[key1]
+			GetWildcardsrcd(url)
 
 if __name__ == '__main__':
 	try:
