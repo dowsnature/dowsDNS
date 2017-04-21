@@ -7,12 +7,14 @@
 
 仅支持Linux/Windows/Mac
 
-## Linux ----- 已测试 python 测试版本 3.5
+## Linux ----- 已测试 ubuntu 16.04 python 测试版本 3.5
+### 启动
 1. sudo ./start.py
 2. 将DNS服务器改为 127.0.0.1
 3. 重启网络服务和浏览器即可
 
-* 更新hosts：./update.py
+### 更新
+* ./update.py
 
 ## Mac ---- 未测试 --- 欢迎有测试的同学提意见
 1. sudo ./start.py 
@@ -21,8 +23,13 @@
 
 * 更新hosts：./update.py
 
-## Windows ---- 未测试 --- 欢迎有测试的同学提意见
-* 右键管理员身份运行 start.py 或 update.py(更新 hosts )
+## Windows ---- 已测试 --- xp -- python 3.4
+### 启动
+1. 将命令行切换到当前目录
+2. python start.py
+
+### 更新
+* python update.py
 
 
 # 局域网共享使用
