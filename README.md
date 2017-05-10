@@ -6,9 +6,10 @@
 # Linux ----- 已测试 ubuntu 16.04 python 测试版本 3.5
 ## 本机使用
 ### 更改 DNS 域名服务器
-1. 在 /etc/resolvconf/resolv.conf.d/base 里添加 nameserver 127.0.0.1
-2. sudo resolvconf -u
-3. sudo systemctl restart network-manager.service
+1. 将 conf/config.json 中的 Local_dns_server 的值改为电脑的 127.0.0.1
+2. 在 /etc/resolvconf/resolv.conf.d/base 里添加 nameserver 127.0.0.1
+3. sudo resolvconf -u
+4. sudo systemctl restart network-manager.service
 
 ### 启动
 * sudo ./start.py
