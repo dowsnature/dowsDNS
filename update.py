@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-
-import urllib.request
 import json
 import os
+import sys
+
+if sys.version_info < (3,4):
+	import urllib2 as urlR
+else:
+	import urllib.request as urlR
+
 
 def  Get_host(url):
-	data = urllib.request.urlopen(url).read().decode()
+	data = urlR.urlopen(url).read().decode()
 	dict_data = {}
 	with open("./data/tmp",'w') as f:
 		f.write(data)
@@ -15,7 +20,7 @@ def  Get_host(url):
 				linedata  = line.split()
 				if len(linedata) >= 2:
 					dict_data[linedata[1]] = linedata[0]
-	os.remove("./data/tmp")	
+	os.remove("./data/tmp")
 
 	return  dict_data
 
@@ -28,7 +33,7 @@ def Update_record(data):
 
 def GetWildcardsrcd(url):
 	print ("Starting  wrcd  updating...")
-	data = urllib.request.urlopen(url) .read().decode()
+	data = urlR.urlopen(url) .read().decode()
 	with open("./data/wrcd.json",'w') as f:
 		f.write(data)
 	print ("success!  wrcd  have done ! ")
@@ -54,4 +59,3 @@ if __name__ == '__main__':
 		main()
 	except Exception as e:
 		raise e
-
