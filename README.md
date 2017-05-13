@@ -7,18 +7,10 @@
 
 理论上支持 Python2.7以上以及 Python3.5 以上
 
-* 系统版本：Ubuntu 16.04
-  * Python3.5：测试通过
-  * Python2.7：支持，未测试
-* 系统版本：Manjaro 17.0.1
-  * Python3.6：测试通过
-  * Python2.7：测试通过
-* 系统版本：Windows XP
-  * Python3.4：测试通过
-  * Python2.7：支持，未测试
-* 系统版本：Mac
-  * Python3.4：支持，未测试
-  * Python2.7：支持，未测试
+ * Python3.5：测试通过
+ * Python3.6：测试通过
+ * Python2.7：测试通过
+
 
 # Linux 
 
