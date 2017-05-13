@@ -3,7 +3,25 @@
 
 快速翻越中国防火墙 ----- 仅支持Linux/Windows/Mac
 
-# Linux ----- 已测试 ubuntu 16.04 python 测试版本 3.5
+# 测试环境
+
+理论上支持 Python2.7以上以及 Python3.5 以上
+
+* 系统版本：Ubuntu 16.04
+  * Python3.5：测试通过
+  * Python2.7：支持，未测试
+* 系统版本：Manjaro 17.0.1
+  * Python3.6：测试通过
+  * Python2.7：测试通过
+* 系统版本：Windows XP
+  * Python3.4：测试通过
+  * Python2.7：支持，未测试
+* 系统版本：Mac
+  * Python3.4：支持，未测试
+  * Python2.7：支持，未测试
+
+# Linux 
+
 ## 本机使用
 ### 更改 DNS 域名服务器
 1. 将 conf/config.json 中的 Local_dns_server 的值改为电脑的 127.0.0.1
@@ -33,14 +51,14 @@
 7. 重启电脑
 8. 同一局域网下，把其他设备或本机的 DNS 改为 运行程序的电脑本地 IP 即可
 
-# Mac ---- 未测试 --- 欢迎有测试的同学提意见
+# Mac 
 1. sudo ./start.py 
 2. 将DNS服务器改为 127.0.0.1
 3. 重启网络服务和浏览器即可
 
 * 更新hosts：./update.py
 
-# Windows ---- 已测试 --- xp -- python 3.4
+# Windows
 ## 启动
 1. 将命令行切换到当前目录
 2. python start.py
@@ -52,6 +70,3 @@
 * https://pypi.python.org/pypi/dnslib
 * https://github.com/racaljk/hosts
 
-
-# 更多请参阅
-* http://www.codedev.cn/forum.php?mod=viewthread&tid=10
