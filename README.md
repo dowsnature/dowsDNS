@@ -1,16 +1,19 @@
 
 # dowsDNS
 
-快速翻越中国防火墙 ----- 仅支持Linux/Windows/Mac
 
-# 测试环境
+快速翻越中国防火墙
 
-理论上支持 Python2.7以上以及 Python3.5 以上
+![](https://img.shields.io/badge/Platform-Windows%20Mac%20linux-blue.svg)
+![dnslib 0.9.7](https://img.shields.io/badge/Dependency-dnslib%200.9.7-blue.svg)
+![](https://img.shields.io/badge/Environment-Python2.7%20%7C%20Python3.4-blue.svg)
 
- * Python3.5：测试通过
- * Python3.6：测试通过
- * Python2.7：测试通过
+# 测试
 
+![](https://img.shields.io/badge/Python2.7-测试通过-brightgreen.svg)
+![](https://img.shields.io/badge/Python3.4-测试通过-brightgreen.svg)
+![](https://img.shields.io/badge/Python3.5-测试通过-brightgreen.svg)
+![](https://img.shields.io/badge/Python3.6-测试通过-brightgreen.svg)
 
 # Linux 
 
