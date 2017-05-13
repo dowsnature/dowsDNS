@@ -10,7 +10,10 @@ else:
 
 
 def  Get_host(url):
-	data = urlR.urlopen(url).read().decode()
+	if sys.version_info < (3,4):
+		data = urlR.urlopen(url).read()
+	else:
+		data = urlR.urlopen(url).read().decode()
 	dict_data = {}
 	with open("./data/tmp",'w') as f:
 		f.write(data)
@@ -33,7 +36,7 @@ def Update_record(data):
 
 def GetWildcardsrcd(url):
 	print ("Starting  wrcd  updating...")
-	data = urlR.urlopen(url) .read().decode()
+	data = urlR.urlopen(url).read().decode()
 	with open("./data/wrcd.json",'w') as f:
 		f.write(data)
 	print ("success!  wrcd  have done ! ")
@@ -55,7 +58,4 @@ def main():
 			GetWildcardsrcd(url)
 
 if __name__ == '__main__':
-	try:
-		main()
-	except Exception as e:
-		raise e
+	main()
