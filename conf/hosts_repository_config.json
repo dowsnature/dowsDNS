@@ -1,0 +1,6 @@
+{
+	"hosts":{
+		"racaljk":"https://github.com/racaljk/hosts/raw/master/hosts"
+	},
+	"wrcd":"https://raw.githubusercontent.com/liuyunbin/dowsDNS/master/data/wrcd.json"
+}
