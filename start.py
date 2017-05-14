@@ -7,6 +7,15 @@ import logging
 import dnslib
 from binascii import unhexlify
 
+url = 'http://ip.6655.com/ip.aspx'
+
+if sys.version_info < (3,4):
+	import urllib2 as urlR
+	Myip = urlR.urlopen(url).read()
+else:
+	import urllib.request as urlR
+	Myip = urlR.urlopen(url).read().decode()
+
 logging.basicConfig(level=logging.INFO)
 dict_data = {}
 dict_config = {}
@@ -14,6 +23,7 @@ Remote_dns_server='114.114.114.114'
 Remote_dns_port=53
 Local_dns_server='127.0.0.1'
 Local_dns_port=53
+Public_Server=False
 
 def Load_config():
 	global dict_data
@@ -22,6 +32,7 @@ def Load_config():
 	global Remote_dns_port
 	global Local_dns_server
 	global Local_dns_port
+	global Public_Server
 	dict_wdata={}
 	with open ("./conf/config.json",'r') as d:
 		dict_config = json.load(d)
@@ -41,6 +52,7 @@ def Load_config():
 	Remote_dns_port		=	dict_config['Remote_dns_port']
 	Local_dns_server	=	dict_config['Local_dns_server']
 	Local_dns_port		= 	dict_config['Local_dns_port']
+	Public_Server		= 	dict_config['Public_Server']
 
 def Tthreading(data,s,addr,sock):
 	t = threading.Thread(target=SendDnsData,args=(data,s,addr,sock,))
@@ -64,6 +76,9 @@ def Search_key_ip(string):
 
 def AddEDNSOption(data,clientip):
 	'''构造edns报文'''
+	if not Public_Server:
+		 clientip = Myip
+
 	if len(data)==28:
 		ip = clientip.split(".")
 		ip = '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip)).lower()
@@ -117,6 +132,7 @@ if __name__ == '__main__':
 	print("Local_dns_port:",Local_dns_port)
 	print("Remote_dns_server:",Remote_dns_server)
 	print("Remote_dns_port:",Remote_dns_port)
+	print("Public_Server:",Public_Server)
 	print("===========Config==========")
 	print("Trying start bind local IP and port ...")
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
