@@ -5,6 +5,7 @@ import threading
 import json
 import logging
 import dnslib
+from binascii import unhexlify
 
 logging.basicConfig(level=logging.INFO)
 dict_data = {}
@@ -24,13 +25,13 @@ def Load_config():
 	dict_wdata={}
 	with open ("./conf/config.json",'r') as d:
 		dict_config = json.load(d)
-	
+
 	with open (dict_config['Rpz_json_path'],'r') as c:
 		dict_data = json.load(c)
 
 	with open("./data/wrcd.json",'r') as f:
 		dict_wdata = json.load(f)
-	
+
 	if dict_config['sni_proxy_on']:
 		for key in dict_wdata:
 			dict_wdata[key] = dict_config['sni_proxy_ip']
@@ -41,8 +42,8 @@ def Load_config():
 	Local_dns_server	=	dict_config['Local_dns_server']
 	Local_dns_port		= 	dict_config['Local_dns_port']
 
-def Tthreading(data,s,addr,):	
-	t = threading.Thread(target=SendDnsData,args=(data,s,addr,))
+def Tthreading(data,s,addr,sock):
+	t = threading.Thread(target=SendDnsData,args=(data,s,addr,sock,))
 	t.setDaemon(True)
 	t.start()
 
@@ -60,10 +61,23 @@ def Search_key_ip(string):
 				return dict_data[b]
 		return None
 
-def SendDnsData(data,s,addr):
+
+def AddEDNSOption(data,clientip):
+	'''构造edns报文'''
+	if len(data)==28:
+		bb = Buffer()
+		ip = clientip.split(".")
+		ip = '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip)).lower()
+		a = b"000029100000000000000c0008000800012000" + ip.encode('utf-8')
+		data = data[:11] + unhexlify(b'01') + data[12:]
+		return data + unhexlify(a)
+	else:
+		return  data
+
+def SendDnsData(data,s,addr,sock):
 	global Remote_dns_server
 	global Remote_dns_port
-	
+
 	'''dns请求报文'''
 	request_packet = dnslib.DNSRecord.parse(data)
 	'''dns请求报文的域名'''
@@ -76,9 +90,8 @@ def SendDnsData(data,s,addr):
 		response_packet.add_answer(dnslib.RR(domain, dnslib.QTYPE.A, rdata=dnslib.A(ip), ttl=60))
 		s.sendto(response_packet.pack(), addr)
 	else:
-		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		data = AddEDNSOption(data,addr[0])
 		sock.sendto(data, (Remote_dns_server,Remote_dns_port))
-		sock.settimeout(5)
 		while True:
 			try:
 				rspdata = sock.recv(4096)
@@ -89,10 +102,12 @@ def SendDnsData(data,s,addr):
 			break
 
 def main(s):
+	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	sock.settimeout(5)
 	while 1:
 		try:
 			data, addr = s.recvfrom(2048)
-			Tthreading(data,s,addr)
+			Tthreading(data,s,addr,sock)
 		except Exception as e:
 			logging.warn("Unknow error:\t%s"%e)
 
@@ -115,4 +130,3 @@ if __name__ == '__main__':
 		sys.exit(-1)
 	print("Bind successfully! Running ...")
 	main(s)
-
