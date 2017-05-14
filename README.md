@@ -6,12 +6,13 @@
 * 支持edns-client-subnet（解析到服务器与你最近）
 * 可作为小型DNS公共服务器，也可以作为本机DNS服务
 
-如果提供服务对象不同，需要修改conf/config.json 中的  Public_Server的值
+如果提供服务对象不同，需要修改`conf/config.json` 中的  `Public_Server`的值
 
-False 代表监听的是本机局域网IP来使用
-True 代表监听公网IP来使用
+`False` 代表监听的是本机局域网IP来使用
 
-如果填写不当，会造成edns-client-subnet失效。
+`True` 代表监听公网IP来使用
+
+如果填写不当，会造成`edns-client-subnet`失效。
 
 
 ![](https://img.shields.io/badge/Platform-Windows%20Mac%20linux-blue.svg)
