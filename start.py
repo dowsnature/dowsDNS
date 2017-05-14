@@ -54,8 +54,8 @@ def Load_config():
 	Local_dns_port		= 	dict_config['Local_dns_port']
 	Public_Server		= 	dict_config['Public_Server']
 
-def Tthreading(data,s,addr,sock):
-	t = threading.Thread(target=SendDnsData,args=(data,s,addr,sock,))
+def Tthreading(data,s,addr):
+	t = threading.Thread(target=SendDnsData,args=(data,s,addr,))
 	t.setDaemon(True)
 	t.start()
 
@@ -105,6 +105,8 @@ def SendDnsData(data,s,addr,sock):
 		s.sendto(response_packet.pack(), addr)
 	else:
 		data = AddEDNSOption(data,addr[0])
+		sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		sock.settimeout(5)
 		sock.sendto(data, (Remote_dns_server,Remote_dns_port))
 		while True:
 			try:
@@ -116,12 +118,11 @@ def SendDnsData(data,s,addr,sock):
 			break
 
 def main(s):
-	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-	sock.settimeout(5)
+
 	while 1:
 		try:
 			data, addr = s.recvfrom(2048)
-			Tthreading(data,s,addr,sock)
+			Tthreading(data,s,addr)
 		except Exception as e:
 			logging.warn("Unknow error:\t%s"%e)
 
