@@ -1,5 +1,5 @@
 {
-	"Remote_dns_server" : "114.114.114.114",
+	"Remote_dns_server" : "119.29.29.29",
 	"Remote_dns_port":53,
 	"Rpz_json_path":"./data/rpz.json",
 	"Local_dns_server" : "0.0.0.0",
