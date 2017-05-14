@@ -88,7 +88,7 @@ def AddEDNSOption(data,clientip):
 	else:
 		return  data
 
-def SendDnsData(data,s,addr,sock):
+def SendDnsData(data,s,addr):
 	global Remote_dns_server
 	global Remote_dns_port
 
