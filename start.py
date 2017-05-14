@@ -65,7 +65,6 @@ def Search_key_ip(string):
 def AddEDNSOption(data,clientip):
 	'''构造edns报文'''
 	if len(data)==28:
-		bb = Buffer()
 		ip = clientip.split(".")
 		ip = '{:02X}{:02X}{:02X}{:02X}'.format(*map(int, ip)).lower()
 		a = b"000029100000000000000c0008000800012000" + ip.encode('utf-8')
