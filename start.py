@@ -5,16 +5,9 @@ import threading
 import json
 import logging
 import dnslib
+import requests
 from binascii import unhexlify
 
-url = 'http://ip.6655.com/ip.aspx'
-
-if sys.version_info < (3,4):
-	import urllib2 as urlR
-	Myip = urlR.urlopen(url).read()
-else:
-	import urllib.request as urlR
-	Myip = urlR.urlopen(url).read().decode()
 
 logging.basicConfig(level=logging.INFO)
 dict_data = {}
@@ -24,6 +17,13 @@ Remote_dns_port=53
 Local_dns_server='127.0.0.1'
 Local_dns_port=53
 Public_Server=False
+Myip = ['127.0.0.1']
+
+def Get_myip():
+	url = 'http://180.76.158.184/ip.aspx'
+	headers = {"Host" : "ip.6655.com"}
+	res = requests.get(url, headers=headers)
+	Myip[0] = res.text
 
 def Load_config():
 	global dict_data
@@ -76,8 +76,9 @@ def Search_key_ip(string):
 
 def AddEDNSOption(data,clientip):
 	'''构造edns报文'''
-	if not Public_Server:
-		 clientip = Myip
+
+	if not Public_Server :
+		 clientip = Myip[0]
 
 	if len(data)==28:
 		ip = clientip.split(".")
@@ -128,12 +129,15 @@ def main(s):
 
 if __name__ == '__main__':
 	Load_config()
+	Get_myip()
 	print("==========Config===========")
 	print("Local_dns_server:",Local_dns_server)
 	print("Local_dns_port:",Local_dns_port)
 	print("Remote_dns_server:",Remote_dns_server)
 	print("Remote_dns_port:",Remote_dns_port)
 	print("Public_Server:",Public_Server)
+	if not Public_Server:
+		print("Your Global IP:",Myip[0])
 	print("===========Config==========")
 	print("Trying start bind local IP and port ...")
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
